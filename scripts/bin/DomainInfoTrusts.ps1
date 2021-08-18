@@ -1,10 +1,10 @@
-﻿Write-Host "Checking if output directory exists" -ForegroundColor Cyan
-if(!(Test-Path $home\desktop\AD_Assessment\DomainInfoTrusts)){ New-Item -Path "$home\desktop\AD_Assessment" -ItemType Directory -Name 'DomainInfoTrusts'}
-$OutputPath = "$home\desktop\AD_Assessment\DomainInfoTrusts"
-
+﻿Write-Host
 Write-Host '========================================' -ForegroundColor Cyan
 Write-Host '    Domain Info and Trusts Enumeration'            -ForegroundColor Cyan
 Write-Host '========================================' -ForegroundColor Cyan
+Write-Host
+if(!(Test-Path $home\desktop\AD_Assessment\DomainInfoTrusts)){ New-Item -Path "$home\desktop\AD_Assessment" -ItemType Directory -Name 'DomainInfoTrusts'}
+$OutputPath = "$home\desktop\AD_Assessment\DomainInfoTrusts"
 
 #  Get Domain Creation Date
 Write-Host "Domain Creation Date" -ForegroundColor Cyan

@@ -45,11 +45,13 @@ Want to do it manually:
 
 ![ADredTeamEnumScript2](https://user-images.githubusercontent.com/20993128/129828201-8302ade2-9926-4c7b-ab9f-6433b997bd09.png)
 
-4. Now run the main script:
+4. Drop the `scripts` folder to `c:\temp`
+
+5. Now run the main script:
 
 ```.\ADRedTeamEnumScripts.ps1```
 
-![ADredTeamEnumScript](https://user-images.githubusercontent.com/20993128/129827187-3b424d44-436d-44ad-95ed-aa2cfe0ea8c2.png)
+![ADredTeamEnumScript](https://user-images.githubusercontent.com/20993128/129833747-e374d821-c878-4129-8895-8c3e98e239d2.png)
 
 ## Author
 - [@n3t1nv4d3](https://twitter.com/n3t1nv4d3) author and researcher (https://github.com/n3t1nv4d3).

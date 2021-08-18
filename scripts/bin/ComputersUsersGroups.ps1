@@ -1,21 +1,20 @@
-﻿Write-Host "Checking if output directory exists" -ForegroundColor Cyan
-if(!(Test-Path $home\desktop\AD_Assessment\ComputersUsersGroups)){ New-Item -Path "$home\desktop\AD_Assessment" -ItemType Directory -Name 'ComputersUsersGroups'}
-$OutputPath = "$home\desktop\AD_Assessment\ComputersUsersGroups"
-
+﻿Write-Host
 Write-Host '========================================' -ForegroundColor Cyan
 Write-Host ' Computers, Users, and Groups - Oh My!' -ForegroundColor Cyan
 Write-Host '========================================' -ForegroundColor Cyan
-Start-Sleep 2
+Write-Host
+if(!(Test-Path $home\desktop\AD_Assessment\ComputersUsersGroups)){ New-Item -Path "$home\desktop\AD_Assessment" -ItemType Directory -Name 'ComputersUsersGroups'}
+$OutputPath = "$home\desktop\AD_Assessment\ComputersUsersGroups"
 
 # Import the module goodness
-Import-Module C:\scripts\bin\PowerUpSQL-master\PowerupSQL.psd1
-Import-Module C:\scripts\bin\ADModule-master\Microsoft.ActiveDirectory.Management.dll
-Import-Module C:\scripts\bin\ADModule-master\ActiveDirectory\ActiveDirectory.psd1
-Import-Module C:\scripts\bin\PowerView.ps1
+Import-Module C:\temp\scripts\bin\PowerUpSQL-master\PowerupSQL.psd1
+Import-Module C:\temp\scripts\bin\ADModule-master\Microsoft.ActiveDirectory.Management.dll
+Import-Module C:\temp\scripts\bin\ADModule-master\ActiveDirectory\ActiveDirectory.psd1
+Import-Module C:\temp\scripts\bin\PowerView.ps1
 
 #  Service Accounts
-. C:\scripts\bin\Find-PSServiceAccounts.ps1
-Find-PSServiceAccounts | Out-File "$OutputPath\ComputersUsersGroups\PSServiceAccounts.csv"
+. C:\temp\scripts\bin\Find-PSServiceAccounts.ps1
+Find-PSServiceAccounts | Out-File "$OutputPath\PSServiceAccounts.csv"
 
 # Get Systems with LAPS
 Get-DomainOU | Get-DomainObjectAcl -ResolveGUIDs | Where-Object {($_.ObjectAceType -like 'ms-Mcs-AdmPwd') -and ($_.ActiveDirectoryRights -match 'ReadProperty')} | ForEach-Object {$_ | Add-Member NoteProperty 'IdentityName' $(Convert-SidToName $_.SecurityIdentifier);$_} > $OutputPath\LAPS_Systems.txt
@@ -145,4 +144,4 @@ Get-ADComputer -Filter 'TrustedForDelegation -eq $true -and PrimaryGroupId -eq 5
 # AD ACL Scan
 Write-Host "AD ACL Scan" -ForegroundColor Cyan
 $base = (Get-ADRootDSE).defaultNamingContext
-C:\scripts\bin\ADACLScan.ps1 -Base $base -Scope Subtree -Output CSV -OutputFolder $OutputPath -SDDate
+C:\temp\scripts\bin\ADACLScan.ps1 -Base $base -Scope Subtree -Output CSV -OutputFolder $OutputPath -SDDate

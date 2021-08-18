@@ -1,11 +1,9 @@
-﻿Write-Host "Checking if output directory exists" -ForegroundColor Cyan
-if(!(Test-Path $home\desktop\AD_Assessment\DCEnum)){ New-Item -Path "$home\desktop\AD_Assessment" -ItemType Directory -Name 'DCEnum'}
-$OutputPath = "$home\desktop\AD_Assessment\DCEnum"
-
+﻿Write-Host
 Write-Host '========================================' -ForegroundColor Cyan
 Write-Host '     Domain Controller Enumeration'     -ForegroundColor Cyan
 Write-Host '========================================' -ForegroundColor Cyan
-
+if(!(Test-Path $home\desktop\AD_Assessment\DCEnum)){ New-Item -Path "$home\desktop\AD_Assessment" -ItemType Directory -Name 'DCEnum'}
+$OutputPath = "$home\desktop\AD_Assessment\DCEnum"
 
 $gdc = Get-ADDomainController -Filter * 
 

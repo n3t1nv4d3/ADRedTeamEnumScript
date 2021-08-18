@@ -1,14 +1,14 @@
-﻿Write-Host '========================================' -ForegroundColor Cyan
+﻿Write-Host
+Write-Host '========================================' -ForegroundColor Cyan
 Write-Host '     Group Policy Object Enumeration'            -ForegroundColor Cyan
 Write-Host '========================================' -ForegroundColor Cyan
-
-Write-Host "Checking if output directory exists" -ForegroundColor Cyan
+Write-Host
 if(!(Test-Path $home\desktop\AD_Assessment\GPOEnum)){ New-Item -Path "$home\desktop\AD_Assessment" -ItemType Directory -Name 'GPOEnum'}
 $OutputPath = "$home\desktop\AD_Assessment\GPOEnum"
 Start-Sleep 2
 # Import the module goodness
 Import-Module GroupPolicy
-Import-Module C:\scripts\bin\PowerView.ps1
+Import-Module c:\temp\scripts\bin\PowerView.ps1
 Start-Sleep 5
 
 # Restricted Groups
